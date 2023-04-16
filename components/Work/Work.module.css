@@ -1,0 +1,17 @@
+.workSection{
+    height: 100vh;
+    scroll-snap-align: center;
+}
+.workContainer{
+    display: flex;
+    justify-content: space-around;
+}
+.left{
+    flex:2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.right{
+    flex:2
+}

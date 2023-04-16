@@ -1,0 +1,68 @@
+.heroSection{
+    height: 100vh;
+    scroll-snap-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.heroContainer{
+    height: 100vh;
+    scroll-snap-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left{
+    flex:2;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    margin: 20px;
+
+}
+
+.left h1{
+    font-family: var(--font-one);
+    font-size: 74px;
+}
+
+.whatDoWeDo{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.whatDoWeDo h2{
+    color: var(--secondary-color);
+}
+
+.description{
+    font-size: 24px;
+}
+
+
+.right{
+    flex:2;
+    position: relative;
+}
+
+.img{
+    width: 800px;
+    height: 600px;
+    object-fit: contain;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+    animation: animate 2s infinite ease alternate
+}
+
+@keyframes animate {
+    to{
+        transform:translateY(20px)
+    }
+}
