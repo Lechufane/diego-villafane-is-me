@@ -52,3 +52,11 @@
 .right{
     flex:1;
 }
+
+.left Button{
+    font-size: 18px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
