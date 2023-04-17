@@ -1,14 +1,14 @@
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
-import NeonSign from "../animations/NeonSign";
+import Mac from "../animations/Mac";
 import WorkDescription from "../WorkDescription/WorkDescription";
-import classes from "./Translation.module.css";
+import classes from "./FrontEnd.module.css";
 
-const Translation: React.FC = () => {
+const FrontEnd: React.FC = () => {
   return (
     <div className={classes.workContainer}>
-      <Canvas camera={{ position: [0, 0, 180] }} shadows={false}>
+      <Canvas shadows={false} camera={{ position: [0, 0, 8] }}>
         <Suspense fallback={null}>
           <Environment
             background={false} // can be true, false or "only" (which only sets the background) (default: false)
@@ -19,7 +19,7 @@ const Translation: React.FC = () => {
             scene={undefined} // adds the ability to pass a custom THREE.Scene, can also be a ref
             encoding={undefined} // adds the ability to pass a custom THREE.TextureEncoding (default: THREE.sRGBEncoding for an array of files and THREE.LinearEncoding for a single texture)
           />
-          <NeonSign position={[0, 1, 0]} />
+          <Mac position={[0, -3, 0]} />
         </Suspense>
         <OrbitControls
           enableZoom={false}
@@ -32,6 +32,7 @@ const Translation: React.FC = () => {
       </Canvas>
       <WorkDescription
         style={{
+          width: "300px",
           padding: "20px",
           margin: "20px",
           borderRadius: "10px",
@@ -41,14 +42,14 @@ const Translation: React.FC = () => {
           fontSize: "18px",
           zIndex: "1",
         }}>
-        Now one last thing about me as a professional, I'm an audiovisual
-        translator, with experience doing translation for short films form
-        Buenos Aires, I like to mention this as English levels are very
-        important for this line of work, and because I love working with movies,
-        It's something I'd do for the love of it.
+        My experience with front-end development is short but being one of the
+        things I like the most, I have keep myself posted with the news on this
+        end of the job. This entire webpage was made with NextJs, ThreeJS, React
+        Simple Maps, and of course CSS Styling and HTML. With responsive layout,
+        :root variables for colors and fonts, and modularized to be reusable.
       </WorkDescription>
     </div>
   );
 };
 
-export default Translation;
+export default FrontEnd;

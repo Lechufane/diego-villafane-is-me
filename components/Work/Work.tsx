@@ -3,16 +3,16 @@ import classes from "./Work.module.css";
 import List from "../List/List";
 import Integrations from "../Integrations/Integrations";
 import Backend from "../Backend/Backend";
-import FrontEnd from "../SocialMedia/FrontEnd";
+import FrontEnd from "../Frontend/FrontEnd";
 import Translation from "../Translation/Translation";
 import WebDevelopment from "../WebDevelopment/WebDevelopment";
 
 const DATA: Array<string> = [
   "Web Development",
   "Integrations",
+  "Backend",
   "Frontend",
   "Translation",
-  "Backend",
 ];
 
 const Work: React.FC = () => {
@@ -31,12 +31,12 @@ const Work: React.FC = () => {
             <WebDevelopment />
           ) : work == "Integrations" ? (
             <Integrations />
+          ) : work == "Backend" ? (
+            <Backend />
           ) : work == "Frontend" ? (
             <FrontEnd />
           ) : work == "Translation" ? (
             <Translation />
-          ) : work == "Backend" ? (
-            <Backend />
           ) : null}
         </div>
       </article>

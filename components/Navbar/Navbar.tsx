@@ -25,7 +25,7 @@ const Navbar: React.FC = (): JSX.Element => {
             width={20}
             height={20}
           />
-          <div style={{ width: "100px" }}>
+          <div style={{ width: "100px", margin: "20px" }}>
             <Button>Hire now!</Button>
           </div>
         </div>

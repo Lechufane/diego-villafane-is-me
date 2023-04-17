@@ -13,5 +13,17 @@
     justify-content: center;
 }
 .right{
-    flex:2
+    flex:2;
+}
+
+@media only screen and (max-width:768px){
+    .workContainer{
+        width: 100%;
+        flex-direction: column;
+
+    }
+    .left{
+        padding: 20px;
+        justify-content: center;
+    }
 }
