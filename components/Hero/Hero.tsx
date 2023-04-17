@@ -24,15 +24,14 @@ const Hero: React.FC = () => {
             <h2>What do I do.</h2>
           </div>
           <p className={classes.description}>
-            I work with front-end technologies like React, or NextJS but I've
-            also worked with backend technologies like Express, nodeJS,
-            postgress, SQL, as well as Typescript in both cases.
+            {
+              "I work with front-end technologies like React, or NextJS but I've also worked with backend technologies like Express, nodeJS, postgress, SQL, as well as Typescript in both cases."
+            }
           </p>
           <p className={classes.description}>
-            This entire portfolio was made with NextJS, Typescript, ThreeJS, and
-            also plain CSS (well, CSS modules...) because I don't like using CSS
-            frameworks while working on my own projects, it's easy to get too
-            comfortable with those.
+            {
+              "This entire portfolio was made with NextJS, Typescript, ThreeJS, and also plain CSS (well, CSS modules...) because I don't like using CSS frameworks while working on my own projects, it's easy to get too much comfortable with those."
+            }
           </p>
 
           <div style={{ width: "100px" }}>

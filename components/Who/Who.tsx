@@ -31,14 +31,14 @@ const Who: React.FC = () => {
             <h2>Who am I</h2>
           </div>
           <p className={classes.description}>
-            I'm a mid-level full-stack developer based in Argentina, with
-            working experience, professional english proficiency, and
-            continuously growing as a true full-stack developer in order to
-            perform in any area.
+            {
+              "I'm a mid-level full-stack developer based in Argentina, with working experience, professional english proficiency, and continuously growing as a true full-stack developer in order to perform in any area."
+            }
           </p>
           <p className={classes.description}>
-            My dream is to work in videogames someday, and I'm already doing my
-            first steps with C# programming.
+            {
+              "My dream is to work in videogames someday, and I'm already doing my first steps with C# programming."
+            }
           </p>
           <div style={{ width: "100px" }}>
             <Button>Check my work.</Button>

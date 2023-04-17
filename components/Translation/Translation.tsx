@@ -41,11 +41,9 @@ const Translation: React.FC = () => {
           fontSize: "18px",
           zIndex: "1",
         }}>
-        Now one last thing about me as a professional, I'm an audiovisual
-        translator, with experience doing translation for short films form
-        Buenos Aires, I like to mention this as English levels are very
-        important for this line of work, and because I love working with movies,
-        It's something I'd do for the love of it.
+        {
+          "Now one last thing about me as a professional, I'm an audiovisual translator, with experience doing translation for short films form Buenos Aires, I like to mention this as English levels are very important for this line of work, and because I love working with movies, It's something I'd do for the love of it."
+        }
       </WorkDescription>
     </div>
   );
