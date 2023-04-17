@@ -12,6 +12,7 @@
     "@emailjs/browser": "^3.11.0",
     "@react-three/drei": "^9.65.3",
     "@react-three/fiber": "^8.12.1",
+    "@react-three/postprocessing": "^2.7.1",
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
     "@types/react-dom": "18.0.11",

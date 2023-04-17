@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import classes from "./Work.module.css";
 import List from "../List/List";
-import WebDevelopment from "../animations/WebDevelopment";
-import Integrations from "../animations/Integrations";
-import SocialMedia from "../animations/SocialMedia";
-import Translation from "../animations/Translation";
-import Backend from "../animations/Backend";
+import Integrations from "../Integrations/Integrations";
+import Backend from "../Backend/Backend";
+import FrontEnd from "../SocialMedia/FrontEnd";
+import Translation from "../Translation/Translation";
+import WebDevelopment from "../WebDevelopment/WebDevelopment";
 
 const DATA: Array<string> = [
   "Web Development",
   "Integrations",
-  "Social Media",
+  "Frontend",
   "Translation",
   "Backend",
 ];
 
 const Work: React.FC = () => {
-  const [work, setWork] = useState<string | null>(null);
+  const [work, setWork] = useState<string>(DATA[0]);
+
+  // console.log("TRABAJO", work);
 
   return (
     <section className={classes.workSection}>
@@ -29,8 +31,8 @@ const Work: React.FC = () => {
             <WebDevelopment />
           ) : work == "Integrations" ? (
             <Integrations />
-          ) : work == "Social Media" ? (
-            <SocialMedia />
+          ) : work == "Frontend" ? (
+            <FrontEnd />
           ) : work == "Translation" ? (
             <Translation />
           ) : work == "Backend" ? (
