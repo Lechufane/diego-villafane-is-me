@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@types/react-simple-maps": "^3.0.0",
+    "@types/three": "^0.150.1",
     "babel-preset-next": "^1.4.0"
   }
 }
