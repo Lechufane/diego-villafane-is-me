@@ -4,7 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
 import Mac from "../animations/Mac";
 import WorkDescription from "../WorkDescription/WorkDescription";
-import classes from "./FrontEnd.module.css";
+import classes from "./Frontend.module.css";
 
 const FrontEnd: React.FC = () => {
   return (
