@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import classes from "./Contact.module.css";
-import Button from "../ui/Button";
 import MapChart from "../Map/Map";
 import emailjs from "@emailjs/browser";
+import SubmitButton from "../ui/SubmitButton";
+import ScrollToTopButton from "../ui/ScrollToUpButton";
 
 type NullableBoolean = boolean | null;
 
@@ -35,7 +36,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section className={classes.contactSection}>
+    <section id="#Contact" className={classes.contactSection}>
       <article className={classes.contactContainer}>
         <div className={classes.left}>
           <form
@@ -52,7 +53,7 @@ const Contact: React.FC = () => {
               cols={30}
               rows={10}
               name='message'></textarea>
-            <Button>Send</Button>
+            <SubmitButton>Send</SubmitButton>
             {success ? "The message was sent, the future awaits!" : null}
           </form>
         </div>

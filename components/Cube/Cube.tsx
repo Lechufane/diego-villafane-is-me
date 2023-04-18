@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
-import { RenderTexture, Text, PerspectiveCamera } from "@react-three/drei";
+import { RenderTexture} from "@react-three/drei";
+import { Text, PerspectiveCamera } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 const Cube: React.FC = () => {

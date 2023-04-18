@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../Logo/Logo";
 import classes from "./Navbar.module.css";
 import Image from "next/image";
-import Button from "../ui/Button";
+import ScrollButton from "../ui/ScrollButton";
 
 const Navbar: React.FC = (): JSX.Element => {
   return (
@@ -26,7 +26,7 @@ const Navbar: React.FC = (): JSX.Element => {
             height={20}
           />
           <div style={{ width: "100px", margin: "20px" }}>
-            <Button>Hire now!</Button>
+            <ScrollButton link="#Contact">Hire now!</ScrollButton>
           </div>
         </div>
       </nav>

@@ -21,7 +21,7 @@ const Work: React.FC = () => {
   // console.log("TRABAJO", work);
 
   return (
-    <section className={classes.workSection}>
+    <section id="#Work" className={classes.workSection}>
       <article className={classes.workContainer}>
         <div className={classes.left}>
           <List setWork={setWork} list={DATA}></List>

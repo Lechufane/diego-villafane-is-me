@@ -1,14 +1,14 @@
 import React from "react";
 import classes from "./Who.module.css";
 import Image from "next/image";
-import Button from "../ui/Button";
+import ScrollButton from "../ui/ScrollButton";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Cube from "../Cube/Cube";
 
 const Who: React.FC = () => {
   return (
-    <section className={classes.whoSection}>
+    <section id="Who" className={classes.whoSection}>
       <div className={classes.whoContainer}>
         <article className={classes.left}>
           <Canvas camera={{ fov: 25, position: [5, 5, 5] }}>
@@ -41,7 +41,7 @@ const Who: React.FC = () => {
             }
           </p>
           <div style={{ width: "100px" }}>
-            <Button>Check my work.</Button>
+            <ScrollButton link="#Work">Check my work.</ScrollButton>
           </div>
         </article>
       </div>
