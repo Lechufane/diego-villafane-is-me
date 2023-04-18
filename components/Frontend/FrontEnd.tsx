@@ -1,4 +1,5 @@
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment }  from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
 import Mac from "../animations/Mac";
