@@ -83,11 +83,11 @@ const Contact: React.FC = () => {
           </form>
           {success === true && (
             <div className={classes.success}>
-              The message was sent, the future awaits!
+              {"The message was sent, the future awaits!"}
             </div>
           )}
           {success === false && (
-            <div className={classes.error}>Sorry, the message couldn't be sent.</div>
+            <div className={classes.error}>{"Sorry, the message couldn't be sent."}</div>
           )}
         </div>
         <div className={classes.right}>
