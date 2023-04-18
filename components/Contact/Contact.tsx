@@ -3,7 +3,6 @@ import classes from "./Contact.module.css";
 import MapChart from "../Map/Map";
 import emailjs from "@emailjs/browser";
 import SubmitButton from "../ui/SubmitButton";
-import ScrollToTopButton from "../ui/ScrollToUpButton";
 
 type NullableBoolean = boolean | null;
 
