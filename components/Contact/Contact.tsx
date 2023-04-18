@@ -10,6 +10,9 @@ type NullableBoolean = boolean | null;
 const Contact: React.FC = () => {
   const form = useRef(null);
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [success, setSuccess] = useState<NullableBoolean>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,11 +28,20 @@ const Contact: React.FC = () => {
         .then(
           (result) => {
             setSuccess(true);
+            setName("");
+            setEmail("");
+            setMessage("");
+            setTimeout(() => {
+              setSuccess(null);
+            }, 3000);
             console.log(result.text);
           },
           (error) => {
             setSuccess(false);
             console.error(error.text);
+            setTimeout(() => {
+              setSuccess(null);
+            }, 3000);
           }
         );
     }
@@ -46,16 +58,38 @@ const Contact: React.FC = () => {
             method='post'
             className={classes.contactForm}>
             <h2 className={classes.title}>Contact me!</h2>
-            <input placeholder='Name' name='name' />
-            <input placeholder='Email' name='email' />
+            <input
+              type="text"
+              placeholder='Name'
+              name='name'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder='Email'
+              name='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <textarea
               placeholder='Write your message'
               cols={30}
               rows={10}
-              name='message'></textarea>
+              name='message'
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            ></textarea>
             <SubmitButton>Send</SubmitButton>
-            {success ? "The message was sent, the future awaits!" : null}
           </form>
+          {success === true && (
+            <div className={classes.success}>
+              The message was sent, the future awaits!
+            </div>
+          )}
+          {success === false && (
+            <div className={classes.error}>Sorry, the message couldn't be sent.</div>
+          )}
         </div>
         <div className={classes.right}>
           <MapChart />
