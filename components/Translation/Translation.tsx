@@ -1,8 +1,8 @@
+import { Suspense } from "react";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React, { Suspense } from "react";
-import NeonSign from "../animations/NeonSign";
-import WorkDescription from "../WorkDescription/WorkDescription";
+import { NeonSign } from "../animations";
+import WorkDescription from "../WorkDescription";
 import classes from "./Translation.module.css";
 
 const Translation: React.FC = () => {

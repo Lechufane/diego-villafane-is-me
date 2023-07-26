@@ -1,8 +1,7 @@
 import { OrbitControls, Stage } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React from "react";
-import ReactLogo from "../animations/ReactLogo";
-import WorkDescription from "../WorkDescription/WorkDescription";
+import { ReactLogo } from "../animations";
+import WorkDescription from "../WorkDescription";
 import classes from "./WebDevelopment.module.css";
 
 const WebDevelopment: React.FC = () => {

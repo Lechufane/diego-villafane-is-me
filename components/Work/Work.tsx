@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import classes from "./Work.module.css";
-import List from "../List/List";
-import Integrations from "../Integrations/Integrations";
-import Backend from "../Backend/Backend";
-import FrontEnd from "../Frontend/FrontEnd";
-import Translation from "../Translation/Translation";
-import WebDevelopment from "../WebDevelopment/WebDevelopment";
+import List from "../List";
+import Integrations from "../Integrations";
+import Backend from "../Backend";
+import FrontEnd from "../Frontend";
+import Translation from "../Translation";
+import WebDevelopment from "../WebDevelopment";
 
 const DATA: Array<string> = [
   "Web Development",
@@ -21,7 +21,7 @@ const Work: React.FC = () => {
   // console.log("TRABAJO", work);
 
   return (
-    <section id="#Work" className={classes.workSection}>
+    <section id='#Work' className={classes.workSection}>
       <article className={classes.workContainer}>
         <div className={classes.left}>
           <List setWork={setWork} list={DATA}></List>

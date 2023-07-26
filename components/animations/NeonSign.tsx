@@ -22,7 +22,7 @@ type GLTFResult = GLTF & {
   };
 };
 
-export default function Model(props: JSX.IntrinsicElements["group"]) {
+export default function NeonSign(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>(null);
 
   const { nodes, materials } = useGLTF(

@@ -1,14 +1,13 @@
-import React from "react";
-import classes from "./Who.module.css";
 import Image from "next/image";
-import ScrollButton from "../ui/ScrollButton";
+import { ScrollButton } from "../ui";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import Cube from "../Cube/Cube";
+import Cube from "../Cube";
+import classes from "./Who.module.css";
 
-const Who: React.FC = () => {
+const Who: React.FC = (): JSX.Element => {
   return (
-    <section id="Who" className={classes.whoSection}>
+    <section id='Who' className={classes.whoSection}>
       <div className={classes.whoContainer}>
         <article className={classes.left}>
           <Canvas camera={{ fov: 25, position: [5, 5, 5] }}>
@@ -41,7 +40,7 @@ const Who: React.FC = () => {
             }
           </p>
           <div style={{ width: "100px" }}>
-            <ScrollButton link="#Work">Check my work.</ScrollButton>
+            <ScrollButton link='#Work'>Check my work.</ScrollButton>
           </div>
         </article>
       </div>

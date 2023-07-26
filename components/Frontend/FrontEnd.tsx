@@ -1,14 +1,14 @@
-import { Environment }  from "@react-three/drei";
+import { Suspense } from "react";
+import { Environment } from "@react-three/drei";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React, { Suspense } from "react";
-import Mac from "../animations/Mac";
-import WorkDescription from "../WorkDescription/WorkDescription";
-import classes from "./Frontend.module.css";
+import { Mac } from "../animations";
+import WorkDescription from "../WorkDescription";
+import styles from "./Frontend.module.css";
 
-const FrontEnd: React.FC = () => {
+const Frontend: React.FC = () => {
   return (
-    <div className={classes.workContainer}>
+    <div className={styles.workContainer}>
       <Canvas shadows={false} camera={{ position: [0, 0, 8] }}>
         <Suspense fallback={null}>
           <Environment
@@ -53,4 +53,4 @@ const FrontEnd: React.FC = () => {
   );
 };
 
-export default FrontEnd;
+export default Frontend;

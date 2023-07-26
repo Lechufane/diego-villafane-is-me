@@ -1,15 +1,15 @@
 import React from "react";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../Navbar";
 import classes from "./Hero.module.css";
 import Image from "next/image";
-import ScrollButton from "../ui/ScrollButton";
+import { ScrollButton } from "../ui";
 import { Canvas } from "@react-three/fiber";
-import { MeshDistortMaterial} from "@react-three/drei";
-import {  OrbitControls, Sphere } from "@react-three/drei";
+import { MeshDistortMaterial } from "@react-three/drei";
+import { OrbitControls, Sphere } from "@react-three/drei";
 
 const Hero: React.FC = () => {
   return (
-    <section id="Hero" className={classes.heroSection}>
+    <section id='Hero' className={classes.heroSection}>
       <Navbar />
       <div className={classes.heroContainer}>
         <article className={classes.left}>
@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
           </p>
 
           <div style={{ width: "100px" }}>
-            <ScrollButton link="#Who">Learn More</ScrollButton>
+            <ScrollButton link='#Who'>Learn More</ScrollButton>
           </div>
         </article>
         <article className={classes.right}>
