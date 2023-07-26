@@ -3,7 +3,7 @@ import classes from "./Work.module.css";
 import List from "../List";
 import Integrations from "../Integrations";
 import Backend from "../Backend";
-import FrontEnd from "../Frontend";
+import Frontend from "../Frontend";
 import Translation from "../Translation";
 import WebDevelopment from "../WebDevelopment";
 
@@ -34,7 +34,7 @@ const Work: React.FC = () => {
           ) : work == "Backend" ? (
             <Backend />
           ) : work == "Frontend" ? (
-            <FrontEnd />
+            <Frontend />
           ) : work == "Translation" ? (
             <Translation />
           ) : null}
