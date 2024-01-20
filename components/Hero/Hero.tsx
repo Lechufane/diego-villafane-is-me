@@ -6,15 +6,51 @@ import { ScrollButton } from "../ui";
 import { Canvas } from "@react-three/fiber";
 import { MeshDistortMaterial } from "@react-three/drei";
 import { OrbitControls, Sphere } from "@react-three/drei";
+import { useEffect, useState } from "react";
+import DataServices from "@/services/dataService"
+import cn from "@/utils/className";
 
-const Hero: React.FC = () => {
+interface Data {
+  navbar: {
+    logo: string,
+    links: {
+      [key: string]: string
+    }
+  }
+  hero: {
+    title: string,
+    description: string[],
+    button: string,
+  }
+}
+
+const Hero: React.FC<Data> = () => {
+  
+  const [data, setData] = useState<any | Data>({
+    navbar: {
+      logo: "",
+      links: {},
+    },
+    hero: {
+      title: "",
+      description: [],
+      button: "",
+    }
+  });
+
+  useEffect(() => {
+    const {ok, data} = DataServices.getData();
+    if(ok) setData(data);
+  }, []);
+
+
   return (
-    <section id='Hero' className={classes.heroSection}>
-      <Navbar />
-      <div className={classes.heroContainer}>
-        <article className={classes.left}>
-          <h1>Create, Resolve, Make.</h1>
-          <div className={classes.whatDoWeDo}>
+    <section id='Hero' className={cn("w-full h-screen, snap-center flex items-center flex-col justify-between",classes.heroSection)}>
+      <Navbar data={data?.navbar} />
+      <div className={cn("h-screen snap-center flex justify-between",classes.heroContainer)}>
+        <article className={cn("flex flex-[2] flex-col gap-5 p-5 m-5",classes.left)}>
+          <h1>{data.hero.title}</h1> 
+          <div className={cn("flex items-center gap-5",classes.whatDoWeDo)}>
             <Image
               className={classes.line}
               src='/icons/line.svg'
@@ -22,21 +58,13 @@ const Hero: React.FC = () => {
               width={40}
               height={20}
             />
-            <h2>What do I do.</h2>
+            <h2>{data.hero.subtitle}</h2>
           </div>
-          <p className={classes.description}>
-            {
-              "I work with front-end technologies like React, or NextJS but I've also worked with backend technologies like Express, nodeJS, postgress, SQL, as well as Typescript in both cases."
-            }
-          </p>
-          <p className={classes.description}>
-            {
-              "This entire portfolio was made with NextJS, Typescript, ThreeJS, and also plain CSS (well, CSS modules...) because I don't like using CSS frameworks while working on my own projects, it's easy to get too much comfortable with those."
-            }
-          </p>
-
-          <div style={{ width: "100px" }}>
-            <ScrollButton link='#Who'>Learn More</ScrollButton>
+            {data.hero.description.map((item: string, index: number) => (
+              <p key={index} className={cn("text-2xl",classes.description)}>{item}</p>
+            ))}
+          <div className="w-[100px]">
+            <ScrollButton link='#Who'>{data.hero.button}</ScrollButton>
           </div>
         </article>
         <article className={classes.right}>
@@ -66,5 +94,6 @@ const Hero: React.FC = () => {
     </section>
   );
 };
+
 
 export default Hero;

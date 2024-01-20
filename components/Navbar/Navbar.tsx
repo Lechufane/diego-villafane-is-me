@@ -1,34 +1,52 @@
-import React from "react";
+
 import Logo from "../Logo/Logo";
 import classes from "./Navbar.module.css";
+import cn from "@/utils/className";
 import Image from "next/image";
 import { ScrollButton } from "../ui";
+import { useEffect, useState } from "react";
 
-const Navbar: React.FC = (): JSX.Element => {
+interface Data {
+    links: {
+      [key: string]: string
+    },
+    button: string,
+}
+
+const Navbar: React.FC<{data: Data}> = ({data}) => {
+  const [links, setLinks] = useState<string[]>([]);
+
+  useEffect(() => {
+    const linksArray = Object.values(data?.links);
+    setLinks(linksArray);
+  }, [data]);
+
   return (
-    <section className={classes.section}>
-      <nav className={classes.navbar}>
-        <div className={classes.links}>
+    <section className={cn("w-full flex justify-center", classes.section)}>
+      <nav className={cn("w-full py-[10px] mx-[10px] flex justify-between items-center", classes.logo)}>
+        <div className={"flex items-center gap-[50px]"}>
           <Logo />
-          <ul className={classes.list}>
-            <li className={classes.listItem}>Home</li>
-            <li className={classes.listItem}>Studio</li>
-            <li className={classes.listItem}>Work</li>
-            <li className={classes.listItem}>Contact</li>
+          <ul className={cn("flex gap-[20px] list-none", classes.list)}>
+            {links?.map((link, index) => {
+              return(
+                <li key={index} className="cursor-pointer">{link}</li>  
+              )
+            })}
+          
           </ul>
         </div>
-        <div className={classes.searchbar}>
-          <Image
-            className={classes.img}
-            src='/icons/searchIcon.svg'
-            alt='searchIcon'
-            width={20}
-            height={20}
-          />
-          <div style={{ width: "100px", margin: "20px" }}>
-            <ScrollButton link='#Contact'>Hire now!</ScrollButton>
+          <div className={cn("w-[100px] m-5", classes.button)}>
+            <ScrollButton link="#Contact">
+              <Image
+                className={cn("cursor-pointer", classes.img)}
+                src="/icons/searchIcon.svg"
+                alt="searchIcon"
+                width={20}
+                height={20}
+              />
+              <p className="px-2 whitespace-nowrap">{data?.button}</p>
+            </ScrollButton>
           </div>
-        </div>
       </nav>
     </section>
   );

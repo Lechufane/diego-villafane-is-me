@@ -1,33 +1,34 @@
-:root{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  --font-one: 'Bebas Neue';
-  --font-two: 'Smooch Sans';
+:root {
+  --font-one: "Bebas Neue";
+  --font-two: "Smooch Sans";
   --main-color: #fff;
-  --secondary-color:#da4ea2;
-  --third-color:#000;
-
-
+  --secondary-color: #da4ea2;
+  --third-color: #000;
 }
 
 @font-face {
-  font-family: 'Bebas Neue';
-  src: url('/fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-family: "Bebas Neue";
+  src: url("/fonts/BebasNeue-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Smooch Sans';
-  src: url('/fonts/SmoochSans-Regular.ttf') format('truetype'),
-  url('/fonts/SmoochSans-Bold.ttf') format(truetype),
-  url('/fonts/SmoochSans-Light.ttf') format(truetype);
+  font-family: "Smooch Sans";
+  src: url("/fonts/SmoochSans-Regular.ttf") format("truetype"),
+    url("/fonts/SmoochSans-Bold.ttf") format(truetype),
+    url("/fonts/SmoochSans-Light.ttf") format(truetype);
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
