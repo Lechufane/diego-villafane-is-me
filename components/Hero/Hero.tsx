@@ -6,50 +6,35 @@ import { ScrollButton } from "../ui";
 import { Canvas } from "@react-three/fiber";
 import { MeshDistortMaterial } from "@react-three/drei";
 import { OrbitControls, Sphere } from "@react-three/drei";
-import { useEffect, useState } from "react";
-import DataServices from "@/services/dataService"
 import cn from "@/utils/className";
+
+interface Props {
+  data: Data
+}
 
 interface Data {
   navbar: {
-    logo: string,
     links: {
       [key: string]: string
-    }
+    },
+    button: string,
   }
   hero: {
     title: string,
+    subtitle: string,
     description: string[],
     button: string,
   }
 }
 
-const Hero: React.FC<Data> = () => {
-  
-  const [data, setData] = useState<any | Data>({
-    navbar: {
-      logo: "",
-      links: {},
-    },
-    hero: {
-      title: "",
-      description: [],
-      button: "",
-    }
-  });
-
-  useEffect(() => {
-    const {ok, data} = DataServices.getData();
-    if(ok) setData(data);
-  }, []);
-
+const Hero: React.FC<Props> = ({data}: Props) => {
 
   return (
     <section id='Hero' className={cn("w-full h-screen, snap-center flex items-center flex-col justify-between",classes.heroSection)}>
       <Navbar data={data?.navbar} />
       <div className={cn("h-screen snap-center flex justify-between",classes.heroContainer)}>
         <article className={cn("flex flex-[2] flex-col gap-5 p-5 m-5",classes.left)}>
-          <h1>{data.hero.title}</h1> 
+          <h1>{data?.hero.title}</h1> 
           <div className={cn("flex items-center gap-5",classes.whatDoWeDo)}>
             <Image
               className={classes.line}

@@ -1,18 +1,18 @@
-.container {
-    height: 100vh;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-    overflow-y: auto;
-    scrollbar-width: none;
-    background: #41295a;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2F0743, #41295a);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2F0743, #41295a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
-    
-
+.body {
+  width: 100%;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow: hidden;
+  scrollbar-width: none;
+  background: #41295a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom #2f0743,
+    #41295a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #2f0743,
+    #41295a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
-.container::-webkit-scrollbar {
-display: none;
-}
-
-

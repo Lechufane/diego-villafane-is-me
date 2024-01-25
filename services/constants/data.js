@@ -19,5 +19,15 @@ export const data = {
       ],
       button: "Learn more",
     },
+    who: {
+      title: "Think outside the box!",
+      subtitle: "Who am I?",
+      description: [
+        "I'm a full-stack developer based in Argentina, with working experience both on front-end development and backend development, professional english proficiency, and a passion for learning new technologies and languages, lately I've been learning GoLang(Go) and Typescript, as well as Tailwind for CSS and NextJS, framework.",
+        "My dream is to work while I travel, to be able to know the world and learn from it, I wan't to help any place I work for to create engaging and interesting projects, while I get to achieve my own goals and dreams.",
+        "As of now I'm working on a sofwtare studio helping people who want to create their own business, or improve their current one, I'm also studying to get my degree on cybersecurity, and experimenting with Docker and Jenkins.",
+      ],
+      button: "Check my work",
+    },
   },
 };
