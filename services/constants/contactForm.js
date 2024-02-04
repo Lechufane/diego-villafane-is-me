@@ -1,10 +1,12 @@
+import { data } from "./data.js";
+
 export const inputs = [
   {
     id: 1,
     type: "text",
     name: "name",
     value: "",
-    placeholder: "Name",
+    placeholder: data.EN.contact.namePlaceholder,
     maxLength: 20,
     className: "m-4 p-[20px] border-none radius-sm text-[18px] w-full",
   },
@@ -13,7 +15,7 @@ export const inputs = [
     type: "email",
     name: "email",
     value: "",
-    placeholder: "Email",
+    placeholder: data.EN.contact.emailPlaceholder,
     maxLength: 40,
     className: "m-4 p-[20px] border-none radius-sm text-[18px] w-full",
   },
@@ -22,7 +24,7 @@ export const inputs = [
     type: "textarea",
     name: "message",
     value: "",
-    placeholder: "Write your message",
+    placeholder: data.EN.contact.messagePlaceholder,
     maxLength: 200,
     className: "m-4 p-[20px] border-none radius-sm text-[18px] w-full",
   },

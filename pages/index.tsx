@@ -6,6 +6,7 @@ import Contact from "@/components/Contact";
 import DataServices from "@/services/dataService";
 import classes from "@/styles/Home.module.css";
 import Background from "@/components/Background/Background";
+import logger from "@/utils/logger";
 
 interface Data {
   navbar: {
@@ -26,6 +27,18 @@ interface Data {
     description: string[];
     button: string;
   };
+  contact: {
+    title: string;
+    namePlaceholder: string;
+    emailPlaceholder: string;
+    messagePlaceholder: string;
+    button: string;
+    mapMessage: string;
+  };
+}
+
+interface WorkComponentProps {
+  selected?: boolean;
 }
 
 export default function Home() {
@@ -46,6 +59,14 @@ export default function Home() {
       description: [],
       button: "",
     },
+    contact: {
+      title: "",
+      namePlaceholder: "",
+      emailPlaceholder: "",
+      messagePlaceholder: "",
+      button: "",
+      mapMessage: "",
+    },
   });
 
   useEffect(() => {
@@ -63,11 +84,10 @@ export default function Home() {
               hero: data.hero,
             }}
           />
-          <Who data={{ who: data.who }} />
-          <Contact />
-          {/* 
-      <Work />
-     */}
+
+          <Who who={data.who} />
+          <Work />
+          <Contact contact={data.contact} />
         </div>
       </Background>
     </div>

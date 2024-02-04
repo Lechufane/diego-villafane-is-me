@@ -2,17 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 interface Props {
-  list: Array<string>;
   text?: string;
-  setWork: (item: string) => void;
 }
-
-const UList = styled.ul`
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
 
 const ListElement = styled.li<{ text?: string }>`
   font-size: 90px;
@@ -21,6 +12,9 @@ const ListElement = styled.li<{ text?: string }>`
   color: transparent;
   -webkit-text-stroke: 1px white;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media only screen and (max-width: 768px) {
     font-size: 50px;
@@ -30,18 +24,18 @@ const ListElement = styled.li<{ text?: string }>`
 
   &::after {
     content: "${(props) => props.text ?? ""}";
-    top: 0;
-    left: 0;
     position: absolute;
     color: #fff;
     -webkit-text-stroke: 1px white;
     width: 0;
     overflow: hidden;
     white-space: nowrap;
+    text-align: center; // Center the text horizontally
   }
 
   &:hover::after {
-    animation: moveText 0.5s linear both;
+    width: 100%;
+    animation: moveText 0.5s linear both; // Keep the fill animation on hover
   }
 
   @keyframes moveText {
@@ -51,16 +45,8 @@ const ListElement = styled.li<{ text?: string }>`
   }
 `;
 
-const List: React.FC<Props> = ({ list, setWork, text = "" }) => {
-  return (
-    <UList>
-      {list.map((item, i) => (
-        <ListElement text={text || item} key={i} onClick={() => setWork(item)}>
-          {item}
-        </ListElement>
-      ))}
-    </UList>
-  );
+const WorkTitle: React.FC<Props> = ({ text }: Props) => {
+  return <ListElement text={text}>{text}</ListElement>;
 };
 
-export default List;
+export default WorkTitle;

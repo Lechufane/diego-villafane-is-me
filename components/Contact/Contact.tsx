@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import classes from "./Contact.module.css";
 import MapChart from "../Map/Map";
 import emailjs from "@emailjs/browser";
@@ -21,19 +21,35 @@ interface FormErrors {
   message: string;
 }
 
-const Contact: React.FC = () => {
-  const formRef = useRef<HTMLFormElement>(null);
-  const INITIAL_FORM: Form = {
-    name: "",
-    email: "",
-    message: "",
-  };
+interface Props {
+  contact: Contact;
+}
 
-  const INITIAL_ERRORS: FormErrors = {
-    name: "",
-    email: "",
-    message: "",
-  };
+interface Contact {
+  title: string;
+  namePlaceholder: string;
+  emailPlaceholder: string;
+  messagePlaceholder: string;
+  button: string;
+  mapMessage: string;
+}
+
+const INITIAL_FORM: Form = {
+  name: "",
+  email: "",
+  message: "",
+};
+
+const INITIAL_ERRORS: FormErrors = {
+  name: "",
+  email: "",
+  message: "",
+};
+
+const Contact: React.FC<Props> = ({ contact }: Props) => {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const { title, button, mapMessage } = contact;
 
   const [success, setSuccess] = useState<NullableBoolean>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -100,10 +116,10 @@ const Contact: React.FC = () => {
             method="post"
             className={classes.contactForm}
           >
-            <h2 className={classes.title}>Contact me!</h2>
+            <h2 className={classes.title}>{title}</h2>
             {formBuilder(inputs)}
             <SubmitButton disabled={handleDisabled()} loading={loading}>
-              Send
+              {button}
             </SubmitButton>
           </form>
           {success && (
@@ -118,7 +134,7 @@ const Contact: React.FC = () => {
           )}
         </div>
         <div className={classes.right}>
-          <MapChart />
+          <MapChart mapMessage={mapMessage} />
         </div>
       </article>
     </section>

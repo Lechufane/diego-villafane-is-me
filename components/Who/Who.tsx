@@ -7,19 +7,17 @@ import classes from "./Who.module.css";
 import cn from "@/utils/className";
 
 interface Props {
-  data: Data;
+  who: Who;
 }
 
-interface Data {
-  who: {
-    title: string;
-    subtitle: string;
-    description: string[];
-    button: string;
-  };
+interface Who {
+  title: string;
+  subtitle: string;
+  description: string[];
+  button: string;
 }
 
-const Who: React.FC<Props> = ({ data }: Props): JSX.Element => {
+const Who: React.FC<Props> = ({ who }: Props): JSX.Element => {
   return (
     <section id="Who" className={cn(classes.whoSection)}>
       <div className={classes.whoContainer}>
@@ -32,7 +30,7 @@ const Who: React.FC<Props> = ({ data }: Props): JSX.Element => {
           </Canvas>
         </article>
         <article className={classes.right}>
-          <h1>{data?.who.title}</h1>
+          <h1>{who.title}</h1>
           <div className={classes.whoWeAre}>
             <Image
               className={classes.line}
@@ -41,15 +39,17 @@ const Who: React.FC<Props> = ({ data }: Props): JSX.Element => {
               width={40}
               height={20}
             />
-            <h2>{data?.who.subtitle}</h2>
+            <h2>{who.subtitle}</h2>
           </div>
-          {data?.who.description.map((item: string, index: number) => (
+          {who.description.map((item: string, index: number) => (
             <p key={index} className={classes.description}>
               {item}
             </p>
           ))}
           <div style={{ width: "100px" }}>
-            <ScrollButton link="#Work">Check my work.</ScrollButton>
+            <ScrollButton link="#Work">
+              <span>{who.button}</span>
+            </ScrollButton>
           </div>
         </article>
       </div>

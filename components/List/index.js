@@ -1,2 +1,2 @@
-import List from './List';
-export default List;
+import WorkTitle from "./WorkTitle";
+export default WorkTitle;
