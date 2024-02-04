@@ -27,7 +27,7 @@ export default function NeonSign(props: JSX.IntrinsicElements["group"]) {
 
   const { nodes, materials } = useGLTF(
     "/animations/neonSign-transformed.glb"
-  ) as GLTFResult;
+  ) as unknown as GLTFResult;
 
   return (
     <group ref={group} {...props} dispose={null}>
