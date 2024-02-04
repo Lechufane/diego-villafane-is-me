@@ -58,7 +58,12 @@ const Contact: React.FC<Props> = ({ contact }: Props) => {
     INITIAL_FORM,
     validator,
     INITIAL_ERRORS
-  );
+  ) as {
+    formBuilder: (inputs: any) => React.ReactNode;
+    form: Form;
+    errors: FormErrors;
+    setForm: (form: Form) => void;
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
@@ -67,8 +72,8 @@ const Contact: React.FC<Props> = ({ contact }: Props) => {
       if (formRef.current) {
         const response = await emailjs
           .sendForm(
-            process.env.NEXT_PUBLIC_SERVICE_ID, //service id
-            process.env.NEXT_PUBLIC_TEMPLATE_ID, //template id
+            process.env.NEXT_PUBLIC_SERVICE_ID as string, //service id
+            process.env.NEXT_PUBLIC_TEMPLATE_ID as string, //template id
             formRef.current,
             process.env.NEXT_PUBLIC_PUBLIC_KEY //public key
           )
