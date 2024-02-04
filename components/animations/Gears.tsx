@@ -27,7 +27,7 @@ export default function Gears(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>(null);
   const { nodes, materials } = useGLTF(
     "/animations/gears-transformed.glb"
-  ) as GLTFResult;
+  ) as unknown as GLTFResult;
 
   return (
     <group ref={group} {...props} dispose={null}>
@@ -43,7 +43,8 @@ export default function Gears(props: JSX.IntrinsicElements["group"]) {
           <group
             position={[0.03, 0, -0.06]}
             rotation={[-1.92, 0.43, 0]}
-            scale={0.07}>
+            scale={0.07}
+          >
             <mesh
               geometry={nodes.GearRust_GearRust_0.geometry}
               material={materials.Gear}
