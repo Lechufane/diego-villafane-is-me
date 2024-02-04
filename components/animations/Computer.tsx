@@ -17,21 +17,24 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF(
     "/animations/computer-transformed.glb"
   ) as unknown as GLTFResult;
-  <group ref={group} {...props} dispose={null}>
-    <group rotation={[-Math.PI / 2, 0, 0]}>
-      <group rotation={[Math.PI / 2, 0, 0]}>
-        <group rotation={[-Math.PI / 2, 0, 0]}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes.retro_computer_setup_retro_computer_setup_Mat_0.geometry
-            }
-            material={materials.retro_computer_setup_Mat}
-          />
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <group rotation={[-Math.PI / 2, 0, 0]}>
+        <group rotation={[Math.PI / 2, 0, 0]}>
+          <group rotation={[-Math.PI / 2, 0, 0]}>
+            <mesh
+              castShadow
+              receiveShadow
+              geometry={
+                nodes.retro_computer_setup_retro_computer_setup_Mat_0.geometry
+              }
+              material={materials.retro_computer_setup_Mat}
+            />
+          </group>
         </group>
       </group>
     </group>
-  </group>;
+  );
 }
+
 useGLTF.preload("/computer-transformed.glb");
