@@ -6,7 +6,6 @@ import Contact from "@/components/Contact";
 import DataServices from "@/services/dataService";
 import classes from "@/styles/Home.module.css";
 import Background from "@/components/Background/Background";
-import logger from "@/utils/logger";
 
 interface Data {
   navbar: {

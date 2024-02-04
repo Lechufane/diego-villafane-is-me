@@ -9,7 +9,7 @@ export const data = {
     navbar: {
       links: {
         home: "Home",
-        studio: "Studio",
+        who: "Who",
         work: "Work",
         contact: "Contact",
       },

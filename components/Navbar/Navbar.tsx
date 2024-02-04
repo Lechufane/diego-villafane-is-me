@@ -4,6 +4,8 @@ import cn from "@/utils/className";
 import Image from "next/image";
 import { ScrollButton } from "../ui";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import logger from "@/utils/logger";
 
 interface Data {
   links: {
@@ -20,6 +22,14 @@ const Navbar: React.FC<{ data: Data }> = ({ data }) => {
     setLinks(linksArray);
   }, [data]);
 
+  const handleClick = (link: string) => {
+    //make the button scroll to the id of the link
+    const element = document.getElementById(link);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className={cn("w-full flex justify-center", classes.section)}>
       <nav
@@ -33,9 +43,14 @@ const Navbar: React.FC<{ data: Data }> = ({ data }) => {
           <ul className={cn("flex gap-[20px] list-none", classes.list)}>
             {links?.map((link, index) => {
               return (
-                <li key={index} className="cursor-pointer">
-                  {link}
-                </li>
+                <Link key={index} className="cursor-pointer" href={`#${link}`}>
+                  <button
+                    onClick={() => handleClick(`#${link}`)}
+                    className={cn("cursor-pointer", classes.link)}
+                  >
+                    {link}
+                  </button>
+                </Link>
               );
             })}
           </ul>
