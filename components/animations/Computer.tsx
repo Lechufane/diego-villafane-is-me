@@ -16,8 +16,7 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>(null);
   const { nodes, materials } = useGLTF(
     "/animations/computer-transformed.glb"
-  ) as GLTFResult;
-  return (
+  ) as unknown as GLTFResult;
     <group ref={group} {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
