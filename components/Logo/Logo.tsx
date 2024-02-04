@@ -1,7 +1,11 @@
 import React from "react";
 import classes from "./Logo.module.css";
 
-const Logo: React.FC = () => {
+interface Props {
+  className?: string;
+}
+
+const Logo: React.FC<Props> = ({className}: Props) => {
   return (
     <span>
       <svg

@@ -7,10 +7,14 @@ import {
   ZoomableGroup,
 } from "react-simple-maps";
 
-const MapChart: React.FC = () => {
+interface Props {
+  mapMessage: string;
+}
+
+const MapChart: React.FC<Props> = ({ mapMessage }: Props): JSX.Element => {
   return (
     <ComposableMap
-      projection='geoAzimuthalEqualArea'
+      projection="geoAzimuthalEqualArea"
       projectionConfig={{
         rotate: [50.0, 10, -10],
         center: [-5, -3],
@@ -20,12 +24,14 @@ const MapChart: React.FC = () => {
         width: "100%",
         height: "100%",
         overflow: "visible",
-      }}>
+      }}
+    >
       <Geographies
-        geography='/features/features.json'
-        fill='none'
-        stroke='#FFFFFF'
-        strokeWidth={0.5}>
+        geography="/features/features.json"
+        fill="none"
+        stroke="#FFFFFF"
+        strokeWidth={0.5}
+      >
         {({ geographies }) =>
           geographies.map((geo) => (
             <Geography key={geo.rsmKey} geography={geo} />
@@ -40,9 +46,10 @@ const MapChart: React.FC = () => {
           stroke: "#FF5533",
           strokeWidth: 2,
           strokeLinecap: "round",
-        }}>
-        <text x='-8' textAnchor='end' alignmentBaseline='middle' fill='#fff'>
-          {"Mendoza. This is my home!"}
+        }}
+      >
+        <text x="-8" textAnchor="end" alignmentBaseline="middle" fill="#fff">
+          {mapMessage}
         </text>
       </Annotation>
     </ComposableMap>

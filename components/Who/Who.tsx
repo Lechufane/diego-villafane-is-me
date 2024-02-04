@@ -4,10 +4,22 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Cube from "../Cube";
 import classes from "./Who.module.css";
+import cn from "@/utils/className";
 
-const Who: React.FC = (): JSX.Element => {
+interface Props {
+  who: Who;
+}
+
+interface Who {
+  title: string;
+  subtitle: string;
+  description: string[];
+  button: string;
+}
+
+const Who: React.FC<Props> = ({ who }: Props): JSX.Element => {
   return (
-    <section id='Who' className={classes.whoSection}>
+    <section id="Who" className={cn(classes.whoSection)}>
       <div className={classes.whoContainer}>
         <article className={classes.left}>
           <Canvas camera={{ fov: 25, position: [5, 5, 5] }}>
@@ -18,29 +30,26 @@ const Who: React.FC = (): JSX.Element => {
           </Canvas>
         </article>
         <article className={classes.right}>
-          <h1>Think outside the box!</h1>
+          <h1>{who.title}</h1>
           <div className={classes.whoWeAre}>
             <Image
               className={classes.line}
-              src='/icons/line.svg'
-              alt='line'
+              src="/icons/line.svg"
+              alt="line"
               width={40}
               height={20}
             />
-            <h2>Who am I</h2>
+            <h2>{who.subtitle}</h2>
           </div>
-          <p className={classes.description}>
-            {
-              "I'm a mid-level full-stack developer based in Argentina, with working experience, professional english proficiency, and continuously growing as a true full-stack developer in order to perform in any area."
-            }
-          </p>
-          <p className={classes.description}>
-            {
-              "My dream is to work in videogames someday, and I'm already doing my first steps with C# programming."
-            }
-          </p>
+          {who.description.map((item: string, index: number) => (
+            <p key={index} className={classes.description}>
+              {item}
+            </p>
+          ))}
           <div style={{ width: "100px" }}>
-            <ScrollButton link='#Work'>Check my work.</ScrollButton>
+            <ScrollButton link="#Work">
+              <span>{who.button}</span>
+            </ScrollButton>
           </div>
         </article>
       </div>

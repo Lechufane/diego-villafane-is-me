@@ -2,11 +2,11 @@ import React from "react";
 
 interface Props {
   children: React.ReactNode;
-  style: any;
+  className?: string;
 }
 
 const WorkDescription: React.FC<Props> = (props) => {
-  return <div style={props.style}>{props.children}</div>;
+  return <div className={props.className}>{props.children}</div>;
 };
 
 export default WorkDescription;

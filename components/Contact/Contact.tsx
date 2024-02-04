@@ -3,47 +3,106 @@ import classes from "./Contact.module.css";
 import MapChart from "../Map/Map";
 import emailjs from "@emailjs/browser";
 import SubmitButton from "../ui/SubmitButton";
+import { inputs, validator } from "@/services/constants/contactForm";
+import useForm from "@/hooks/useForm";
+import logger from "@/utils/logger";
 
 type NullableBoolean = boolean | null;
 
-const Contact: React.FC = () => {
-  const form = useRef(null);
+interface Form {
+  name: string;
+  email: string;
+  message: string;
+}
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+interface FormErrors {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface Props {
+  contact: Contact;
+}
+
+interface Contact {
+  title: string;
+  namePlaceholder: string;
+  emailPlaceholder: string;
+  messagePlaceholder: string;
+  button: string;
+  mapMessage: string;
+}
+
+const INITIAL_FORM: Form = {
+  name: "",
+  email: "",
+  message: "",
+};
+
+const INITIAL_ERRORS: FormErrors = {
+  name: "",
+  email: "",
+  message: "",
+};
+
+const Contact: React.FC<Props> = ({ contact }: Props) => {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const { title, button, mapMessage } = contact;
+
   const [success, setSuccess] = useState<NullableBoolean>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const { formBuilder, form, errors, setForm } = useForm(
+    INITIAL_FORM,
+    validator,
+    INITIAL_ERRORS
+  );
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     e.preventDefault();
-    if (form.current) {
-      emailjs
-        .sendForm(
-          "service_2gzteos",
-          "template_gqxf38p",
-          form.current,
-          "-gbYQsi7djBUFOZ2_"
-        )
-        .then(
-          (result) => {
+    try {
+      if (formRef.current) {
+        const response = await emailjs
+          .sendForm(
+            process.env.NEXT_PUBLIC_SERVICE_ID, //service id
+            process.env.NEXT_PUBLIC_TEMPLATE_ID, //template id
+            formRef.current,
+            process.env.NEXT_PUBLIC_PUBLIC_KEY //public key
+          )
+          .then(() => {
             setSuccess(true);
-            setName("");
-            setEmail("");
-            setMessage("");
+            setLoading(false);
+            formRef.current?.reset();
+            setForm(INITIAL_FORM);
             setTimeout(() => {
               setSuccess(null);
             }, 3000);
-            console.log(result.text);
-          },
-          (error) => {
-            setSuccess(false);
-            console.error(error.text);
-            setTimeout(() => {
-              setSuccess(null);
-            }, 3000);
-          }
-        );
+          });
+      }
+    } catch (error) {
+      setSuccess(false);
+      setLoading(false);
+      logger.error(error);
     }
+  };
+
+  const handleDisabled = () => {
+    //check if input is empty
+    if (form.name === "" || form.email === "" || form.message === "") {
+      return true;
+    }
+    //check if there are errors
+    if (errors.name !== "" || errors.email !== "" || errors.message !== "") {
+      return true;
+    }
+    //check if the form is loading
+    if (loading) {
+      return true;
+    }
+    return false;
   };
 
   return (
@@ -51,47 +110,31 @@ const Contact: React.FC = () => {
       <article className={classes.contactContainer}>
         <div className={classes.left}>
           <form
-            ref={form}
+            ref={formRef}
             onSubmit={handleSubmit}
-            action='submit'
-            method='post'
-            className={classes.contactForm}>
-            <h2 className={classes.title}>Contact me!</h2>
-            <input
-              type="text"
-              placeholder='Name'
-              name='name'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <input
-              type="email"
-              placeholder='Email'
-              name='email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <textarea
-              placeholder='Write your message'
-              cols={30}
-              rows={10}
-              name='message'
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            ></textarea>
-            <SubmitButton>Send</SubmitButton>
+            action="submit"
+            method="post"
+            className={classes.contactForm}
+          >
+            <h2 className={classes.title}>{title}</h2>
+            {formBuilder(inputs)}
+            <SubmitButton disabled={handleDisabled()} loading={loading}>
+              {button}
+            </SubmitButton>
           </form>
-          {success === true && (
-            <div className={classes.success}>
+          {success && (
+            <div className="text-emerald-600">
               {"The message was sent, the future awaits!"}
             </div>
           )}
-          {success === false && (
-            <div className={classes.error}>{"Sorry, the message couldn't be sent."}</div>
+          {success == false && (
+            <div className="text-red-600">
+              {"Sorry, the message couldn't be sent."}
+            </div>
           )}
         </div>
         <div className={classes.right}>
-          <MapChart />
+          <MapChart mapMessage={mapMessage} />
         </div>
       </article>
     </section>
