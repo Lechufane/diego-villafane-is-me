@@ -25,3 +25,21 @@
   border: none;
   align-self: center;
 }
+
+.spinner {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  border: 3px solid var(--main-color);
+  border-top-color: var(--secondary-color);
+  animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

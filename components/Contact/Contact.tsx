@@ -22,8 +22,7 @@ interface FormErrors {
 }
 
 const Contact: React.FC = () => {
-  const formRef = useRef(null);
-
+  const formRef = useRef<HTMLFormElement>(null);
   const INITIAL_FORM: Form = {
     name: "",
     email: "",
@@ -45,39 +44,49 @@ const Contact: React.FC = () => {
     INITIAL_ERRORS
   );
 
-  useEffect(() => {
-    logger.debug("form", form);
-    logger.debug("errors", errors);
-  }, [form, errors]);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     e.preventDefault();
-    if (formRef.current) {
-      emailjs
-        .sendForm(
-          "service_2gzteos",
-          "template_gqxf38p",
-          form,
-          "-gbYQsi7djBUFOZ2_"
-        )
-        .then(
-          (result) => {
+    try {
+      if (formRef.current) {
+        const response = await emailjs
+          .sendForm(
+            process.env.NEXT_PUBLIC_SERVICE_ID, //service id
+            process.env.NEXT_PUBLIC_TEMPLATE_ID, //template id
+            formRef.current,
+            process.env.NEXT_PUBLIC_PUBLIC_KEY //public key
+          )
+          .then(() => {
             setSuccess(true);
+            setLoading(false);
+            formRef.current?.reset();
             setForm(INITIAL_FORM);
             setTimeout(() => {
               setSuccess(null);
             }, 3000);
-          },
-          (error) => {
-            setSuccess(false);
-            setForm(INITIAL_FORM);
-            console.error(error.text);
-            setTimeout(() => {
-              setSuccess(null);
-            }, 3000);
-          }
-        );
+          });
+      }
+    } catch (error) {
+      setSuccess(false);
+      setLoading(false);
+      logger.error(error);
     }
+  };
+
+  const handleDisabled = () => {
+    //check if input is empty
+    if (form.name === "" || form.email === "" || form.message === "") {
+      return true;
+    }
+    //check if there are errors
+    if (errors.name !== "" || errors.email !== "" || errors.message !== "") {
+      return true;
+    }
+    //check if the form is loading
+    if (loading) {
+      return true;
+    }
+    return false;
   };
 
   return (
@@ -93,7 +102,7 @@ const Contact: React.FC = () => {
           >
             <h2 className={classes.title}>Contact me!</h2>
             {formBuilder(inputs)}
-            <SubmitButton disabled={!form.name || !form.email || !form.message}>
+            <SubmitButton disabled={handleDisabled()} loading={loading}>
               Send
             </SubmitButton>
           </form>
@@ -102,7 +111,7 @@ const Contact: React.FC = () => {
               {"The message was sent, the future awaits!"}
             </div>
           )}
-          {!success && (
+          {success == false && (
             <div className="text-red-600">
               {"Sorry, the message couldn't be sent."}
             </div>

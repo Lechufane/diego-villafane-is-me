@@ -1,19 +1,33 @@
 import React from "react";
 import classes from "./Button.module.css";
+import cn from "@/utils/className";
 
 interface Props {
   children: React.ReactNode;
   disabled?: boolean;
+  loading?: boolean;
+  label?: string;
 }
 
-const SubmitButton: React.FC<Props> = (props) => {
+const SubmitButton: React.FC<Props> = ({
+  loading,
+  disabled,
+  children,
+  label,
+  ...props
+}: Props) => {
   return (
     <button
-      type="submit"
-      className={props.disabled ? classes.btnDisabled : classes.btn}
-      disabled={props.disabled}
+      className={disabled ? classes.btnDisabled : classes.btn}
+      disabled={disabled}
     >
-      {props.children}
+      {loading ? (
+        <div className="flex justify-center items-center">
+          <div className={cn(classes.spinner, "text-center")}></div>
+        </div>
+      ) : (
+        label || children
+      )}
     </button>
   );
 };

@@ -33,14 +33,13 @@ export const validator = (field, value) => {
 
   // const parsedValue = parseInt(value);
   const properFormats = {
-    //test if value has only letters, allow spaces and accents
+    //test if value has only letters, allow spaces and accents. It must be at least 7 characters long
     name:
-      /^[a-zA-ZÀ-ÿ\s]{1,40}$/g.test(value) || //test if value has only letters, allow spaces and accents and it's not longer than 40 characters
+      /^[a-zA-ZÀ-ÿ\s]{3,40}$/g.test(value) || //test if value has only letters, allow spaces and accents and it's not longer than 40 characters
       "Este campo es inválido",
     email:
-      //test if there is an @ symbol and a dot after it with at least 2 characters
-      /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/g.test(value) ||
-      "Este campo es inválido",
+      //test if there is an @ symbol and a dot after it with at least 2 characters. there MUST be at least 1 character before the @ symbol
+      /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/g.test(value) || "Este campo es inválido",
     message:
       //test if value it's not longer than 200 characters
       value.length < 200 || "Este campo es inválido",
