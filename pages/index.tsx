@@ -7,6 +7,7 @@ import DataServices from "@/services/dataService";
 import classes from "@/styles/Home.module.css";
 import Background from "@/components/Background/Background";
 import Navbar from "@/components/Navbar";
+import cn from "@/utils/className";
 
 interface Data {
   navbar: {
@@ -42,7 +43,8 @@ interface WorkComponentProps {
 }
 
 ///TODO: finish language support, add language switcher, add download resume button besides contact title.
-///TODO: add a footer with social media links and a link to the github repo. Fix responsiveness.
+
+///TODO: add a footer with social media links and a link to the github repo.
 
 export default function Home() {
   const [data, setData] = useState<Data>({
@@ -80,20 +82,15 @@ export default function Home() {
   return (
     <div className={classes.body}>
       <Background>
-        <div className="flex flex-col justify-center items-center gap-20">
-          <Navbar data={data.navbar} />
-          <Hero
-            data={{
-              navbar: data.navbar,
-              hero: data.hero,
-            }}
-          />
-          <Who who={data.who} />
-          <Work />
-          <Contact contact={data.contact} />
-          {/*
-           */}
-        </div>
+        <Navbar data={data.navbar} />
+        <Hero
+          data={{
+            hero: data.hero,
+          }}
+        />
+        <Who who={data.who} />
+        <Work />
+        <Contact contact={data.contact} />
       </Background>
     </div>
   );

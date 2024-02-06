@@ -2,8 +2,8 @@ import classes from "./Background.module.css";
 
 const Background = ({ children }: any) => {
   return (
-    <section className={classes.body}>
-      <span className={classes.backgroundColor}>{children}</span>
+    <section className="flex flex-col justify-center items-center">
+      {children}
       <span className={classes.span}></span>
       <span className={classes.span}></span>
       <span className={classes.span}></span>

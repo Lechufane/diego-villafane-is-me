@@ -5,6 +5,7 @@ import { OrbitControls } from "@react-three/drei";
 import Cube from "../Cube";
 import classes from "./Who.module.css";
 import cn from "@/utils/className";
+import SectionDescription from "@/components/sectionDescription/SectionDescription";
 
 interface Props {
   who: Who;
@@ -21,58 +22,47 @@ const Who: React.FC<Props> = ({ who }: Props): JSX.Element => {
   return (
     <section
       id="Who"
-      className={cn("bg-tranparent h-screen mt-12 p-12", classes.whoSection)}
+      className={cn(
+        "w-full h-screen flex flex-nowrap justify-evenly",
+        classes.whoSection
+      )}
     >
-      <div
+      <article
         className={cn(
-          "h-screen snap-center flex justify-between flex-nowrap",
-          classes.whoContainer
+          "flex flex-col justify-center items-center gap-5 w-[50vh] p-5 relative overflow-visible rounded-full"
         )}
       >
-        <article
+        <div
           className={cn(
-            "overflow-visible w-[50vw] h-full flex flex-col justify-center items-center z-10 bg-transparent flex-nowrap p-4",
-            classes.left
+            "absolute  w-full h-full overflow-visible my-auto rounded-full",
+            classes.canvas
           )}
         >
-          <Canvas camera={{ fov: 25, position: [5, 5, 5] }}>
+          <Canvas
+            camera={{ fov: 25, position: [5, 5, 5] }}
+            style={{
+              zIndex: 10,
+              overflow: "visible",
+              margin: "0 auto",
+              borderRadius: "50%",
+            }}
+          >
             <OrbitControls enablePan={false} autoRotate enableZoom={false} />
             <ambientLight intensity={1} />
             <directionalLight position={[3, 2, 1]} />
             <Cube />
           </Canvas>
-        </article>
-        <article
-          className={cn(
-            "overflow-visible w-[50vw] h-fit flex flex-col justify-center items-center z-10 bg-transparent flex-nowrap",
-            classes.right
-          )}
-        >
-          <h1 className="font-semibold font-fontOne text-7xl">{who.title}</h1>
-          <div className={classes.whoWeAre}>
-            <Image
-              className={classes.line}
-              src="/icons/line.svg"
-              alt="line"
-              width={40}
-              height={20}
-            />
-            <h2>{who.subtitle}</h2>
-          </div>
-          <div className="h-fit">
-            {who.description.map((item: string, index: number) => (
-              <p key={index} className={classes.description}>
-                {item}
-              </p>
-            ))}
-          </div>
-          <div style={{ width: "100px" }}>
-            <ScrollButton link="#Work">
-              <span>{who.button}</span>
-            </ScrollButton>
-          </div>
-        </article>
-      </div>
+        </div>
+      </article>
+
+      <article
+        className={cn(
+          "flex flex-col justify-center items-center max-w-[50vw] max-h-screen p-5 my-auto gap-1",
+          classes.textContainer
+        )}
+      >
+        <SectionDescription section={who} buttonLink="Work" />
+      </article>
     </section>
   );
 };

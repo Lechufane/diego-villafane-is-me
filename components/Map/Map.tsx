@@ -17,11 +17,11 @@ const MapChart: React.FC<Props> = ({ mapMessage }: Props): JSX.Element => {
       projection="geoAzimuthalEqualArea"
       projectionConfig={{
         rotate: [50.0, 10, -10],
-        center: [-5, -3],
-        scale: 450,
+        center: [-20, -15],
+        scale: 1500,
       }}
       style={{
-        width: "100%",
+        width: "60vh",
         height: "100%",
         overflow: "visible",
       }}
@@ -48,7 +48,13 @@ const MapChart: React.FC<Props> = ({ mapMessage }: Props): JSX.Element => {
           strokeLinecap: "round",
         }}
       >
-        <text x="-8" textAnchor="end" alignmentBaseline="middle" fill="#fff">
+        <text
+          x="-8"
+          textAnchor="end"
+          alignmentBaseline="middle"
+          fill="#fff"
+          fontSize={40}
+        >
           {mapMessage}
         </text>
       </Annotation>
