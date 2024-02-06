@@ -126,7 +126,7 @@ const Contact: React.FC<Props> = ({ contact }: Props) => {
               <h2 className={classes.title}>{title}</h2>
               <DownloadButton
                 label="Download CV"
-                link="https://drive.google.com/file/d/1Yi6dPZSUXVWGhb1mRFeQud1Cc0MF9V8E/view?usp=sharing"
+                link="https://drive.google.com/file/d/1uxsu-biysK6W36R-etTfkvjnOF7LEmhf/view?usp=sharing"
                 className="text-white"
               ></DownloadButton>
             </div>
