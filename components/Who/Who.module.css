@@ -33,6 +33,9 @@
     height: 200vh;
     gap: 20px;
   }
+  .canvas {
+    height: fit-content;
+  }
   .right {
     align-items: center;
     padding: 20px;

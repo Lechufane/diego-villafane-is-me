@@ -18,10 +18,10 @@ const MapChart: React.FC<Props> = ({ mapMessage }: Props): JSX.Element => {
       projectionConfig={{
         rotate: [50.0, 10, -10],
         center: [-5, -3],
-        scale: 450,
+        scale: 650,
       }}
       style={{
-        width: "100%",
+        width: "60vh",
         height: "100%",
         overflow: "visible",
       }}

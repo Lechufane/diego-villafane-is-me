@@ -98,7 +98,7 @@ const Work: React.FC = () => {
 
   return (
     <>
-      <section id="#Work" className="my-8 p-12">
+      <section id="#Work" className={cn(classes.workSection, "p-12 h-screen")}>
         {work.map((Component, i) => {
           switch (selectedWork.name) {
             case Component.name:

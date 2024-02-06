@@ -21,7 +21,10 @@ const Who: React.FC<Props> = ({ who }: Props): JSX.Element => {
   return (
     <section
       id="Who"
-      className={cn("bg-tranparent h-screen mt-12 p-12", classes.whoSection)}
+      className={cn(
+        "bg-tranparent h-screen min-h-[100vh] mt-12 p-12",
+        classes.whoSection
+      )}
     >
       <div
         className={cn(
@@ -31,7 +34,7 @@ const Who: React.FC<Props> = ({ who }: Props): JSX.Element => {
       >
         <article
           className={cn(
-            "overflow-visible w-[50vw] h-full flex flex-col justify-center items-center z-10 bg-transparent flex-nowrap p-4",
+            "w-[50vw] h-screen flex flex-col justify-center items-center z-10 bg-transparent flex-nowrap p-4",
             classes.left
           )}
         >
