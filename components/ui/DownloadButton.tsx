@@ -15,11 +15,9 @@ const DownloadButton: React.FC<Props> = ({
   ...props
 }: Props) => {
   return (
-    <button className={cn(className, classes.dwldBtn)}>
-      <a rel="noopener noreferrer" target="_blank" href={link} download>
-        {label}
-      </a>
-    </button>
+    <a rel="noopener noreferrer" target="_blank" href={link} download>
+      <button className={cn(className, classes.dwldBtn)}>{label}</button>
+    </a>
   );
 };
 

@@ -7,6 +7,7 @@ import { inputs, validator } from "@/services/constants/contactForm";
 import useForm from "@/hooks/useForm";
 import logger from "@/utils/logger";
 import { DownloadButton } from "../ui";
+import cn from "@/utils/className";
 
 type NullableBoolean = boolean | null;
 
@@ -115,6 +116,14 @@ const Contact: React.FC<Props> = ({ contact }: Props) => {
     <section id="#Contact" className={classes.contactSection}>
       <article className={classes.contactContainer}>
         <div className={classes.left}>
+          <div className="flex justify-evenly items-center w-full mb-4">
+            <h2 className={cn(classes.title)}>{title}</h2>
+            <DownloadButton
+              label="Download CV"
+              link="https://drive.google.com/file/d/1uxsu-biysK6W36R-etTfkvjnOF7LEmhf/view?usp=sharing"
+              className="text-white"
+            ></DownloadButton>
+          </div>
           <form
             ref={formRef}
             onSubmit={handleSubmit}
@@ -122,14 +131,6 @@ const Contact: React.FC<Props> = ({ contact }: Props) => {
             method="post"
             className={classes.contactForm}
           >
-            <div className="flex justify-between items-center w-full mb-4">
-              <h2 className={classes.title}>{title}</h2>
-              <DownloadButton
-                label="Download CV"
-                link="https://drive.google.com/file/d/1uxsu-biysK6W36R-etTfkvjnOF7LEmhf/view?usp=sharing"
-                className="text-white"
-              ></DownloadButton>
-            </div>
             {formBuilder(inputs)}
             <SubmitButton disabled={handleDisabled()} loading={loading}>
               {button}

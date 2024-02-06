@@ -38,12 +38,7 @@ interface Data {
   };
 }
 
-interface WorkComponentProps {
-  selected?: boolean;
-}
-
-///TODO: finish language support, add language switcher, add download resume button besides contact title.
-
+///TODO: finish language support, add language switcher.
 ///TODO: add a footer with social media links and a link to the github repo.
 
 export default function Home() {
