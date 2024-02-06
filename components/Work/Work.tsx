@@ -101,7 +101,7 @@ const Work: React.FC = () => {
       <section
         id="#Work"
         className={cn(
-          "relative w-full h-screen flex flex-col items-center justify-evenly mt-20"
+          "relative w-full h-screen flex flex-col items-center justify-evenly mt-20 z-10"
         )}
       >
         {work.map((Component, i) => {

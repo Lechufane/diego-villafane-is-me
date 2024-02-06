@@ -48,7 +48,13 @@ const MapChart: React.FC<Props> = ({ mapMessage }: Props): JSX.Element => {
           strokeLinecap: "round",
         }}
       >
-        <text x="-8" textAnchor="end" alignmentBaseline="middle" fill="#fff">
+        <text
+          x="-8"
+          textAnchor="end"
+          alignmentBaseline="middle"
+          fill="#fff"
+          fontSize={40}
+        >
           {mapMessage}
         </text>
       </Annotation>
