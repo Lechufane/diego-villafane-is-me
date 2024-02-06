@@ -6,6 +6,7 @@ import SubmitButton from "../ui/SubmitButton";
 import { inputs, validator } from "@/services/constants/contactForm";
 import useForm from "@/hooks/useForm";
 import logger from "@/utils/logger";
+import { DownloadButton } from "../ui";
 
 type NullableBoolean = boolean | null;
 
@@ -68,12 +69,6 @@ const Contact: React.FC<Props> = ({ contact }: Props) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
-    logger.debug(
-      "ENV variables",
-      process.env.NEXT_PUBLIC_SERVICE_ID,
-      process.env.NEXT_PUBLIC_TEMPLATE_ID,
-      process.env.NEXT_PUBLIC_PUBLIC_KEY
-    );
     try {
       if (formRef.current) {
         const response = await emailjs
@@ -127,7 +122,14 @@ const Contact: React.FC<Props> = ({ contact }: Props) => {
             method="post"
             className={classes.contactForm}
           >
-            <h2 className={classes.title}>{title}</h2>
+            <div className="flex justify-between items-center w-full mb-4">
+              <h2 className={classes.title}>{title}</h2>
+              <DownloadButton
+                label="Download CV"
+                link="https://drive.google.com/file/d/1Yi6dPZSUXVWGhb1mRFeQud1Cc0MF9V8E/view?usp=sharing"
+                className="text-white"
+              ></DownloadButton>
+            </div>
             {formBuilder(inputs)}
             <SubmitButton disabled={handleDisabled()} loading={loading}>
               {button}
