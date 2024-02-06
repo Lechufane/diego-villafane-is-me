@@ -68,6 +68,12 @@ const Contact: React.FC<Props> = ({ contact }: Props) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
+    logger.debug(
+      "ENV variables",
+      process.env.NEXT_PUBLIC_SERVICE_ID,
+      process.env.NEXT_PUBLIC_TEMPLATE_ID,
+      process.env.NEXT_PUBLIC_PUBLIC_KEY
+    );
     try {
       if (formRef.current) {
         const response = await emailjs
