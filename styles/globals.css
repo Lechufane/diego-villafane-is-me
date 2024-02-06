@@ -9,6 +9,12 @@
   --secondary-color: #da4ea2;
   --third-color: #000;
   --disabled-color: #c4c4c4;
+  /* -- Breakpoints (reference for max-width) -- */
+  --mobile: 320px;
+  --tablet: 768px;
+  --desktop: 1024px;
+  --large-desktop: 1400px;
+  font-size: 16px;
 }
 
 @font-face {
@@ -34,5 +40,5 @@
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-two);
-  color: #fff;
+  color: var(--main-color);
 }

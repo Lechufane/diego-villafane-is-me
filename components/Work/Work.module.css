@@ -29,7 +29,10 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .workSection {
-    margin-top: 100vh;
-  }
+}
+
+@media only screen and (max-width: 768px) {
+}
+
+@media only screen and (max-width: 320px) {
 }

@@ -82,20 +82,15 @@ export default function Home() {
   return (
     <div className={classes.body}>
       <Background>
-        <div className={cn("flex flex-col justify-center items-center gap-20")}>
-          <Navbar data={data.navbar} />
-          <Hero
-            data={{
-              navbar: data.navbar,
-              hero: data.hero,
-            }}
-          />
-          <Who who={data.who} />
-          <Work />
-          <Contact contact={data.contact} />
-          {/*
-           */}
-        </div>
+        <Navbar data={data.navbar} />
+        <Hero
+          data={{
+            hero: data.hero,
+          }}
+        />
+        <Who who={data.who} />
+        <Work />
+        <Contact contact={data.contact} />
       </Background>
     </div>
   );

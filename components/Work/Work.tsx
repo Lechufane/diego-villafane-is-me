@@ -98,19 +98,18 @@ const Work: React.FC = () => {
 
   return (
     <>
-      <section id="#Work" className={cn(classes.workSection, "p-12 h-screen")}>
+      <section
+        id="#Work"
+        className={cn(
+          "relative w-full h-screen flex flex-col items-center justify-evenly mt-20"
+        )}
+      >
         {work.map((Component, i) => {
           switch (selectedWork.name) {
             case Component.name:
               return (
-                <div
-                  key={i}
-                  className={cn(
-                    classes.workContainer,
-                    "flex flex-col items-center justify-evenly w-full h-screen"
-                  )}
-                >
-                  <div className="grid grid-cols-3 w-full h-[200px] justify-items-center items-center">
+                <>
+                  <div className="absolute top-0 flex items-center justify-center w-full h-auto">
                     <Img
                       className="cursor-pointer hover:size-16"
                       src={arrowBack}
@@ -120,8 +119,10 @@ const Work: React.FC = () => {
                       height={50}
                       onClick={() => handleCarousel("left")}
                     />
+                    <div className="w-[500px]">
+                      <WorkTitle text={selectedWork.name} />
+                    </div>
 
-                    <WorkTitle text={Component.name} />
                     <Img
                       className="cursor-pointer hover:size-16"
                       src={arrowForward}
@@ -132,11 +133,14 @@ const Work: React.FC = () => {
                       onClick={() => handleCarousel("right")}
                     />
                   </div>
-                  <Component.Component
-                    key={i}
-                    selected={selectedWork.name === Component.name}
-                  />
-                  <WorkDescription className="w-[90vw] h-full mb-40 p-8 m-8 rounded-md border-none bg-[#FFF] text-[--third-color] font-semibold text-[1.2rem] z-10">
+
+                  <div className="absolute w-full h-[500px] my-auto min-w-[300px] min-h-[500px]">
+                    <Component.Component
+                      key={i}
+                      selected={selectedWork.name === Component.name}
+                    />
+                  </div>
+                  <WorkDescription className="absolute bottom-0 p-8 m-8 rounded-md border-none bg-[#FFF] text-[--third-color] font-semibold text-[1.2rem] z-10 min-w-[600px] min-h-[200px]">
                     <p className="text-[--third-color] font-semibold text-[1.2rem] z-15">
                       {selectedWork.description}
                     </p>
@@ -149,7 +153,7 @@ const Work: React.FC = () => {
                       </ScrollButton>
                     </div>
                   </WorkDescription>
-                </div>
+                </>
               );
             default:
               return null;
