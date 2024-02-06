@@ -19,9 +19,22 @@ interface Who {
 
 const Who: React.FC<Props> = ({ who }: Props): JSX.Element => {
   return (
-    <section id="Who" className={cn(classes.whoSection)}>
-      <div className={classes.whoContainer}>
-        <article className={classes.left}>
+    <section
+      id="Who"
+      className={cn("bg-tranparent h-screen mt-12 p-12", classes.whoSection)}
+    >
+      <div
+        className={cn(
+          "h-screen snap-center flex justify-between flex-nowrap",
+          classes.whoContainer
+        )}
+      >
+        <article
+          className={cn(
+            "overflow-visible w-[50vw] h-full flex flex-col justify-center items-center z-10 bg-transparent flex-nowrap p-4",
+            classes.left
+          )}
+        >
           <Canvas camera={{ fov: 25, position: [5, 5, 5] }}>
             <OrbitControls enablePan={false} autoRotate enableZoom={false} />
             <ambientLight intensity={1} />
@@ -29,8 +42,13 @@ const Who: React.FC<Props> = ({ who }: Props): JSX.Element => {
             <Cube />
           </Canvas>
         </article>
-        <article className={classes.right}>
-          <h1>{who.title}</h1>
+        <article
+          className={cn(
+            "overflow-visible w-[50vw] h-fit flex flex-col justify-center items-center z-10 bg-transparent flex-nowrap",
+            classes.right
+          )}
+        >
+          <h1 className="font-semibold font-fontOne text-7xl">{who.title}</h1>
           <div className={classes.whoWeAre}>
             <Image
               className={classes.line}
@@ -41,11 +59,13 @@ const Who: React.FC<Props> = ({ who }: Props): JSX.Element => {
             />
             <h2>{who.subtitle}</h2>
           </div>
-          {who.description.map((item: string, index: number) => (
-            <p key={index} className={classes.description}>
-              {item}
-            </p>
-          ))}
+          <div className="h-fit">
+            {who.description.map((item: string, index: number) => (
+              <p key={index} className={classes.description}>
+                {item}
+              </p>
+            ))}
+          </div>
           <div style={{ width: "100px" }}>
             <ScrollButton link="#Work">
               <span>{who.button}</span>

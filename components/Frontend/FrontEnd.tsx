@@ -17,7 +17,7 @@ const Frontend: React.FC<Props> = ({ selected }: Props) => {
         camera={{ position: [0, 0, 8] }}
         style={{
           width: "100vw",
-          height: "41vh",
+          height: "40vh",
           display: selected ? "block" : "none",
         }}
       >

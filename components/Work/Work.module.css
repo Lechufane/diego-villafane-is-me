@@ -28,13 +28,8 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .workContainer {
-    width: 100%;
-    flex-direction: column;
-  }
-  .left {
-    padding: 20px;
-    justify-content: center;
+@media only screen and (max-width: 1024px) {
+  .whoContainer {
+    display: block;
   }
 }

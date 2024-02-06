@@ -10,7 +10,10 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      fontOne: ["Bebas Neue", "sans-serif"],
+      fontTwio: ["Smooch Sans", "sans-serif"],
+    },
   },
   plugins: [],
 };

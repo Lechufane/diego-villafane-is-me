@@ -31,27 +31,23 @@ const Hero: React.FC<Props> = ({ data }: Props) => {
   const { navbar, hero } = data;
 
   return (
-    <section
-      id="Hero"
-      className={cn(
-        "w-full h-screen, snap-center flex items-center flex-col justify-between",
-        classes.heroSection
-      )}
-    >
-      <Navbar data={navbar} />
+    <section id="Home" className={cn("bg-transparent", classes.heroSection)}>
       <div
         className={cn(
-          "h-screen snap-center flex justify-between",
+          "h-screen snap-center flex justify-between flex-nowrap",
           classes.heroContainer
         )}
       >
         <article
-          className={cn("flex flex-[2] flex-col gap-5 p-5 m-5", classes.left)}
+          className={cn(
+            "overflow-visible w-[50vw] flex flex-col justify-center items-center z-20 bg-transparent flex-nowrap p-4",
+            classes.left
+          )}
         >
           <h1>{hero.title}</h1>
           <div className={cn("flex items-center gap-5", classes.whatDoWeDo)}>
             <Image
-              className={classes.line}
+              className={cn(classes.line)}
               src="/icons/line.svg"
               alt="line"
               width={40}
@@ -60,16 +56,38 @@ const Hero: React.FC<Props> = ({ data }: Props) => {
             <h2>{hero.subtitle}</h2>
           </div>
           {hero.description.map((item: string, index: number) => (
-            <p key={index} className={cn("text-2xl", classes.description)}>
+            <p
+              key={index}
+              className={cn("text-2xl overflow-visible", classes.description)}
+            >
               {item}
             </p>
           ))}
-          <div className="w-[100px]">
-            <ScrollButton link="#Who">{hero.button}</ScrollButton>
+          <div className="w-[100px] z-30">
+            <ScrollButton
+              link="#Who"
+              className="flex justify-center items-center"
+            >
+              {hero.button}
+            </ScrollButton>
           </div>
         </article>
-        <article className={classes.right}>
-          <Canvas>
+        <article
+          className={cn(
+            "w-[40vw] flex flex-col justify-center items-center z-10 bg-transparent flex-nowrap",
+            classes.right
+          )}
+        >
+          <Canvas
+            style={{
+              width: "65vw",
+              height: "100%",
+              overflow: "visible",
+              zIndex: 0,
+            }}
+            className={classes.canvas}
+            camera={{ position: [0, 0, 5] }}
+          >
             <OrbitControls enablePan={false} enableZoom={false} />
             <ambientLight intensity={1} />
             <directionalLight position={[3, 0, 1]} />

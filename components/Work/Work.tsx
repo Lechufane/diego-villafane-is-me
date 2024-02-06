@@ -11,6 +11,7 @@ import arrowBack from "@/public/icons/arrow-back.svg";
 import arrowForward from "@/public/icons/arrow-forward.svg";
 import { ScrollButton } from "../ui";
 import classes from "./Work.module.css";
+import cn from "@/utils/className";
 
 const DATA: Array<DataObject> = [
   {
@@ -97,14 +98,17 @@ const Work: React.FC = () => {
 
   return (
     <>
-      <section id="#Work" className="my-8">
+      <section id="#Work" className="my-8 p-12">
         {work.map((Component, i) => {
           switch (selectedWork.name) {
             case Component.name:
               return (
                 <div
                   key={i}
-                  className="flex flex-col items-center justify-evenly w-full h-screen"
+                  className={cn(
+                    classes.workContainer,
+                    "flex flex-col items-center justify-evenly w-full h-screen"
+                  )}
                 >
                   <div className="grid grid-cols-3 w-full h-[200px] justify-items-center items-center">
                     <Img
@@ -132,7 +136,7 @@ const Work: React.FC = () => {
                     key={i}
                     selected={selectedWork.name === Component.name}
                   />
-                  <WorkDescription className="w-[90vw] h-52 mb-40 p-8 m-8 rounded-md border-none bg-[#FFF] text-[--third-color] font-semibold text-[1.2rem] z-10">
+                  <WorkDescription className="w-[90vw] h-full mb-40 p-8 m-8 rounded-md border-none bg-[#FFF] text-[--third-color] font-semibold text-[1.2rem] z-10">
                     <p className="text-[--third-color] font-semibold text-[1.2rem] z-15">
                       {selectedWork.description}
                     </p>
